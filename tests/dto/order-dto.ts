@@ -13,7 +13,6 @@ export class OrderDto {
     customerName: string,
     customerPhone: string,
     comment: string,
-
   ) {
     this.status = status
     this.courierId = courierId
