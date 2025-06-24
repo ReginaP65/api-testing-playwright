@@ -16,7 +16,7 @@ test('post order with valid income >0 should receive code 200', async ({ request
 })
 test('post order with negative income  should receive code 400', async ({ request }) => {
   const requestBody = new OrderDto(-100, 0, 17, 1000, 12)
-  const rawResponse = await request.post(baseURL, { data: requestBody})
+  const rawResponse = await request.post(baseURL, { data: requestBody })
   console.log('response status:', rawResponse.status())
   console.log('response body:', await rawResponse.json())
   expect.soft(rawResponse.status()).toBe(StatusCodes.BAD_REQUEST)
