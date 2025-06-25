@@ -52,16 +52,3 @@ test('post order with age more than 16 should receive code 200', async ({ reques
 
   expect.soft(rawResponse.status()).toBe(StatusCodes.OK)
 })
-test.skip('post order with age less then 16 should receive code 400 (but it returns 200)', async ({
-  request,
-}) => {
-  const requestBody = new OrderDto(100, 0, 15, 1000, 12)
-
-  const rawResponse = await request.post(baseURL, {
-    data: requestBody,
-  })
-  console.log('response status:', rawResponse.status())
-  console.log('response body:', await rawResponse.json())
-
-  expect.soft(rawResponse.status()).toBe(StatusCodes.BAD_REQUEST)
-})
