@@ -13,7 +13,6 @@ test('login to a student with incorrect credentials', async ({ request }) => {
 })
 
 test('login to a student returns jwt', async ({ request }) => {
-  // const loginData= new LoginDto('reginape','whs4s5qbYbfT2n')
   const loginData = LoginDto.createLoginWithCorrectData()
   const response = await request.post(authURL, {
     data: loginData,
