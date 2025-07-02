@@ -9,7 +9,10 @@ const TEST_CUSTOMER_NAME = 'Regina'
 const TEST_CUSTOMER_PHONE = '123456789'
 
 test('Authorization and order creation test', async ({ request }) => {
-  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
+  const loginDto = new LoginDto(
+    process.env.USER, 
+    process.env.PASSWORD
+  )
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
@@ -27,7 +30,10 @@ test('Authorization and order creation test', async ({ request }) => {
   console.log('Order created:', orderJsonResponse)
 })
 test('Authorization and order deletion test', async ({ request }) => {
-  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
+  const loginDto = new LoginDto(
+    process.env.USER, 
+    process.env.PASSWORD
+  )
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
@@ -51,7 +57,10 @@ test('Authorization and order deletion test', async ({ request }) => {
   console.log('Delete status:', deleteResponse.status())
 })
 test('Authorization and order search test', async ({ request }) => {
-  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
+  const loginDto = new LoginDto(
+    process.env.USER, 
+    process.env.PASSWORD
+  )
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
