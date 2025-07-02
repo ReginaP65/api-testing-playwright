@@ -9,7 +9,7 @@ const TEST_CUSTOMER_NAME = 'Regina'
 const TEST_CUSTOMER_PHONE = '123456789'
 
 test('Authorization and order creation test', async ({ request }) => {
-  const loginDto = new LoginDto(process.env.USER, process.env.PASSWORD)
+  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
@@ -23,11 +23,11 @@ test('Authorization and order creation test', async ({ request }) => {
     },
   })
   console.log(apiOrderResponse.status())
-  const orderJsonResponse = await apiOrderResponse.text()
+  const orderJsonResponse = await apiOrderResponse.json()
   console.log('Order created:', orderJsonResponse)
 })
 test('Authorization and order deletion test', async ({ request }) => {
-  const loginDto = new LoginDto(process.env.USER, process.env.PASSWORD)
+  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
@@ -39,7 +39,7 @@ test('Authorization and order deletion test', async ({ request }) => {
       Authorization: `Bearer ${jwt}`,
     },
   })
-  const orderJsonResponse = await apiOrderResponse.text()
+  const orderJsonResponse = await apiOrderResponse.json()
   const orderId = orderJsonResponse.id
   console.log('order id  received:', orderId)
 
@@ -51,7 +51,7 @@ test('Authorization and order deletion test', async ({ request }) => {
   console.log('Delete status:', deleteResponse.status())
 })
 test('Authorization and order search test', async ({ request }) => {
-  const loginDto = new LoginDto(process.env.USER, process.env.PASSWORD)
+  const loginDto = new LoginDto('reginape', 'whs4s5qbYbfT2n')
   const apiResponse = await request.post(loginURL, {
     data: loginDto,
   })
@@ -63,7 +63,7 @@ test('Authorization and order search test', async ({ request }) => {
       Authorization: `Bearer ${jwt}`,
     },
   })
-  const orderJsonResponse = await apiOrderResponse.text()
+  const orderJsonResponse = await apiOrderResponse.json()
   const orderId = orderJsonResponse.id
   console.log('Order id  received:', orderId)
 
@@ -73,6 +73,6 @@ test('Authorization and order search test', async ({ request }) => {
     },
   })
   console.log('Get order status:', getOrderResponse.status())
-  const getJsonResponse = await getOrderResponse.text()
+  const getJsonResponse = await getOrderResponse.json()
   console.log('Order fetched:', getJsonResponse)
 })
